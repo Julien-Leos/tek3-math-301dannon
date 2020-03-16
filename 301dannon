@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+import sys
+import parsing
+import selection
+import insertion
+import bubble
+import quick
+import merge
+
+def display(array):
+
+    print("%d element%s" % (len(array), 's' if len(array) != 1 else ''))
+    result = selection.selection_sort(array.copy())
+    print("Selection sort: %d comparisons" % result)
+    result = insertion.insertion_sort(array.copy())
+    print("Insertion sort: %d comparisons" % result)
+    result = bubble.bubble_sort(array.copy())
+    print("Bubble sort: %d comparisons" % result)
+    # result = quick.quick_sort(array.copy(), 0, len(array) - 1)
+    result = quick.quick_sort(array.copy())
+    print("Quicksort: %d comparisons" % result)
+    result = merge.merge_sort(array.copy())
+    print("Merge sort: %d comparisons" % result)
+ 
+sys.argv.pop(0)
+try:
+    array = parsing.parse(sys.argv)
+except:
+    sys.exit(84)
+display(array)
